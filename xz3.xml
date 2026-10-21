@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     Local manifest for the Sony Xperia XZ3 801SO (akatsuki), LineageOS 22.2.
+     Use with: repo init -u https://github.com/LineageOS/android.git -b lineage-22.2
+     and this repository cloned as .repo/local_manifests.
+-->
+<manifest>
+
+  <remote name="xz3"
+          fetch="https://github.com/" />
+
+  <!-- Private repositories: the sync needs GitHub credentials (see README). -->
+  <remote name="xz3-private"
+          fetch="https://github.com/" />
+
+  <remote name="muppets"
+          fetch="https://github.com/" />
+
+  <!-- GCam from vendor/sony/xz3 replaces Aperture (PRODUCT_NO_CAMERA in the device tree). -->
+  <remove-project name="LineageOS/android_packages_apps_Aperture" />
+
+  <!-- Device -->
+  <project path="device/sony/akatsuki"
+           name="xz3-dev/android_device_sony_akatsuki"
+           remote="xz3"
+           revision="lineage-22.2-xz3" />
+  <project path="device/sony/tama-common"
+           name="xz3-dev/android_device_sony_tama-common"
+           remote="xz3"
+           revision="lineage-22.2-xz3" />
+
+  <!-- Kernel: Carillon NFC, tap to wake and KernelSU-Next (vendored in drivers/kernelsu) -->
+  <project path="kernel/sony/sdm845"
+           name="xz3-dev/android_kernel_sony_sdm845"
+           remote="xz3"
+           revision="lineage-22.2-xz3"
+           clone-depth="1" />
+
+  <!-- tama-common dependency, normally added by roomservice -->
+  <project path="hardware/sony/SonyOpenTelephony"
+           name="LineageOS/android_hardware_sony_SonyOpenTelephony"
+           remote="github"
+           revision="lineage-22.2" />
+
+  <!-- Proprietary files -->
+  <project path="vendor/sony/akatsuki"
+           name="TheMuppets/proprietary_vendor_sony_akatsuki"
+           remote="muppets"
+           revision="lineage-22.2"
+           clone-depth="1" />
+  <project path="vendor/sony/tama-common"
+           name="TheMuppets/proprietary_vendor_sony_tama-common"
+           remote="muppets"
+           revision="lineage-22.2"
+           clone-depth="1" />
+  <project path="vendor/sony/xz3"
+           name="xz3-dev/proprietary_vendor_sony_xz3"
+           remote="xz3-private"
+           revision="lineage-22.2" />
+
+</manifest>
