@@ -16,6 +16,9 @@
   <remote name="muppets"
           fetch="https://github.com/" />
 
+  <remote name="pixelos-gitlab"
+          fetch="https://gitlab.com/pixelos-aosp/" />
+
   <!-- GCam from vendor/sony/xz3 replaces Aperture (PRODUCT_NO_CAMERA in the device tree). -->
   <remove-project name="LineageOS/android_packages_apps_Aperture" />
 
@@ -57,5 +60,19 @@
            name="xz3-dev/proprietary_vendor_sony_xz3"
            remote="xz3-private"
            revision="lineage-22.2" />
+
+  <!-- Google apps (Git LFS); device/sony/akatsuki/gms/gms.mk picks the packages -->
+  <project path="vendor/gms"
+           name="vendor_gms-15"
+           remote="pixelos-gitlab"
+           revision="ffe5c52d947eec784a07124dfb72e95840e8f3c7"
+           upstream="fifteen"
+           clone-depth="1" />
+  <project path="vendor/pixel/gsans"
+           name="proprietary_vendor_pixel_gsans"
+           remote="pixelos-gitlab"
+           revision="9883405a0134e041287003212a59bb82cce9f5ab"
+           upstream="sixteen"
+           clone-depth="1" />
 
 </manifest>

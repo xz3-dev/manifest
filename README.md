@@ -25,6 +25,8 @@ m target-files-package otatools-package
 | `vendor/sony/akatsuki` | TheMuppets/proprietary_vendor_sony_akatsuki | `lineage-22.2` |
 | `vendor/sony/tama-common` | TheMuppets/proprietary_vendor_sony_tama-common | `lineage-22.2` |
 | `vendor/sony/xz3` | xz3-dev/proprietary_vendor_sony_xz3 (private) | `lineage-22.2` |
+| `vendor/gms` | gitlab.com/pixelos-aosp/vendor_gms-15 (Git LFS) | `ffe5c52d947e` (`fifteen`) |
+| `vendor/pixel/gsans` | gitlab.com/pixelos-aosp/proprietary_vendor_pixel_gsans | `9883405a0134` |
 
 Removed: `packages/apps/Aperture` (GCam is the camera app).
 
@@ -33,6 +35,12 @@ project. The camera bridge library and the patched camera provider are
 committed to `vendor/sony/xz3`; GCam is downloaded from the xz3-gcam CI by
 `vendor/sony/xz3/scripts/fetch-prebuilts.sh`, so neither xz3-camera-bridge nor
 xz3-gcam is synced.
+
+`vendor/gms` is PixelOS' Android 15 QPR2 GMS package (extracted from
+`bp1a.250305.020`); only the packages listed in `device/sony/akatsuki/gms/gms.mk`
+are built, but `repo sync` with `--git-lfs` downloads all of its APKs (about
+2.5 GB). `vendor/pixel/gsans` provides Google Sans (commit extracted from the same
+release). Both are public and need no token.
 
 Tested revisions of TheMuppets: akatsuki `d1dafaa568a2`, tama-common
 `e4046a9cc96b`.
